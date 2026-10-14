@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Samuel Kwame Oteng | Public administrator and fisheries policy practitioner, Ghana</title>
+<meta name="description" content="Samuel Kwame Oteng is a Deputy Director in Ghana's Civil Service working on fisheries governance, policy, legislation and public sector reform.">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F2EA; --surface:#FDFBF7; --ink:#181A2B; --muted:#55576A;
+  --accent:#86590C; --accent-soft:#C8973A; --rule:rgba(24,26,43,.15);
+  --band:#181A2B; --band-ink:#F3EEE4; --band-muted:#B8BACB; --band-accent:#E3B863;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12131D; --surface:#1A1B29; --ink:#F1ECE2; --muted:#A9ABBD;
+    --accent:#E3B863; --accent-soft:#C8973A; --rule:rgba(241,236,226,.17);
+    --band:#0B0C14; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12131D; --surface:#1A1B29; --ink:#F1ECE2; --muted:#A9ABBD;
+  --accent:#E3B863; --accent-soft:#C8973A; --rule:rgba(241,236,226,.17);
+  --band:#0B0C14; color-scheme:dark;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 5rem)}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+section{padding:clamp(4rem,9vw,6.5rem) 0}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.15}
+h2{font-size:clamp(2rem,4vw,2.9rem);margin-bottom:2.5rem;letter-spacing:-.01em}
+p{max-width:62ch}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--rule)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.25rem 2rem;padding-top:.9rem;padding-bottom:.9rem}
+.logo{font-family:var(--serif);font-size:1.25rem;font-weight:500;text-decoration:none}
+.nav-links{display:flex;flex-wrap:wrap;gap:.25rem 1.75rem;list-style:none}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--muted);text-decoration:none;padding:.3rem 0}
+.nav-links a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:.35em;text-decoration-color:var(--accent-soft)}
+
+/* hero */
+#hero{padding-top:clamp(3.5rem,8vw,6rem)}
+#hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(2.5rem,6vw,5rem);align-items:end}
+.hero-copy>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+.hero-copy>:nth-child(2){animation-delay:.12s}.hero-copy>:nth-child(3){animation-delay:.24s}.hero-copy>:nth-child(4){animation-delay:.36s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+h1{font-size:clamp(3.2rem,8.5vw,6.6rem);font-weight:400;letter-spacing:-.025em;line-height:.98;margin-bottom:1.75rem}
+.lede{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.65rem);line-height:1.4;margin-bottom:1rem}
+.role{color:var(--muted);margin-bottom:2rem}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;padding:.85rem 1.6rem;font:500 .95rem var(--sans);text-decoration:none;border:1px solid var(--ink);cursor:pointer;background:transparent;color:var(--ink);transition:background .2s,color .2s}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.now{background:var(--band);color:var(--band-ink);padding:clamp(1.5rem,3vw,2.25rem);border:1px solid var(--rule)}
+.now h2{font-size:1.5rem;margin-bottom:1.25rem}
+.now dt{font-size:.85rem;color:var(--band-muted);margin-top:1.1rem}
+.now dd{font-family:var(--serif);font-size:1.15rem;line-height:1.35;margin-top:.15rem}
+.now dd small{display:block;font:italic 400 .95rem var(--serif);color:var(--band-accent);margin-top:.2rem}
+
+/* about */
+#about{background:var(--surface);border-block:1px solid var(--rule)}
+#about .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(2.5rem,6vw,6rem)}
+#about p{margin-bottom:1.25rem;font-size:1.05rem;line-height:1.75}
+#about strong{font-weight:600}
+blockquote{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.35;border-left:3px solid var(--accent-soft);padding-left:1.5rem;align-self:start}
+blockquote cite{display:block;font:500 .9rem var(--sans);color:var(--muted);margin-top:1rem}
+.methods{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--rule)}
+.methods h3{font:600 .95rem var(--sans);margin-bottom:.5rem}
+.methods p{color:var(--muted);font-size:1rem;margin:0}
+
+/* research */
+.areas{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(2rem,5vw,4rem)}
+.area{border-top:1px solid var(--ink);padding:1.4rem 0 2rem}
+.area h3{font-size:1.4rem;margin-bottom:.6rem}
+.area p{color:var(--muted);font-size:.98rem;margin-bottom:.75rem}
+.area .meta{font-size:.88rem;font-weight:500;color:var(--accent)}
+
+/* publications */
+#publications{background:var(--band);color:var(--band-ink)}
+#publications .pub{display:grid;grid-template-columns:5rem 1fr;gap:1.5rem;padding:1.75rem 0;border-top:1px solid rgba(243,238,228,.2)}
+.pub a{color:var(--band-accent);text-underline-offset:.25em}
+#publications .pub:last-child{border-bottom:1px solid rgba(243,238,228,.2)}
+.pub time{font-family:var(--serif);font-size:1.3rem;color:var(--band-accent)}
+.pub h3{font-size:1.4rem;margin-bottom:.4rem}
+.pub p{color:var(--band-muted);font-size:.98rem}
+.pub .journal{font-family:var(--serif);font-style:italic;color:var(--band-ink);margin-top:.5rem}
+
+/* cv */
+#cv .wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(2.5rem,6vw,6rem)}
+#cv .intro p{color:var(--muted);margin-bottom:1.75rem}
+.cv-group+.cv-group{margin-top:3rem}
+.cv-group h3{font-size:1.5rem;margin-bottom:1rem}
+.row{display:grid;grid-template-columns:8rem 1fr;gap:1.25rem;padding:1.1rem 0;border-top:1px solid var(--rule)}
+.row time{font-size:.9rem;font-weight:500;color:var(--accent);padding-top:.2rem}
+.row h4{font-size:1.2rem}
+.row .org{font-weight:500;font-size:.95rem;margin:.15rem 0 .4rem}
+.row p{color:var(--muted);font-size:.95rem}
+
+/* contact */
+#contact{background:var(--surface);border-top:1px solid var(--rule)}
+#contact .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2.5rem,6vw,6rem)}
+#contact .intro p{color:var(--muted);margin-bottom:2rem}
+.details{display:grid;gap:1.1rem}
+.details dt{font-size:.85rem;color:var(--muted)}
+.details dd{font-size:1.05rem}
+.details a{text-underline-offset:.25em;text-decoration-color:var(--accent-soft)}
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-size:.9rem;font-weight:500;margin-bottom:.4rem}
+.field input,.field select,.field textarea{width:100%;padding:.8rem .9rem;font:400 1rem var(--sans);color:var(--ink);background:var(--bg);border:1px solid var(--muted);border-radius:0;appearance:none}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center;padding-right:2.5rem}
+.field textarea{min-height:9rem;resize:vertical}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.status{margin-top:.9rem;font-size:.92rem;color:var(--muted);min-height:1.4em}
+
+footer{background:var(--band);color:var(--band-muted);padding:2rem 0;font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem 2rem}
+
+@media (max-width:860px){
+  #hero .wrap,#about .wrap,#cv .wrap,#contact .wrap,.areas{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:.2rem}
+  .pair{grid-template-columns:1fr}
+  #publications .pub{grid-template-columns:1fr;gap:.4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-copy>*{animation:none}
+}
+[hidden]{display:none!important}
+#gallery{background:var(--surface);border-block:1px solid var(--rule)}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:1rem}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
+.media-grid.vids{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
+.item{display:flex;flex-direction:column;gap:.5rem}
+.item .thumb{padding:0;border:0;background:var(--rule);cursor:zoom-in;display:block}
+.item img,.item video{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#000}
+.item video{aspect-ratio:16/9}
+.item h3{font-size:1.15rem}
+.item p{font-size:.92rem;color:var(--muted)}
+.linkcard{display:grid;place-items:center;aspect-ratio:16/9;background:var(--band);color:var(--band-ink);font:500 1rem var(--sans);text-decoration:none;padding:1rem;text-align:center}
+.linkcard:hover{background:var(--accent);color:var(--bg)}
+.rm{align-self:flex-start;background:none;border:0;color:var(--accent);font:500 .88rem var(--sans);text-decoration:underline;cursor:pointer;padding:.2rem 0}
+.empty{color:var(--muted)}
+dialog{margin:auto;border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:1.5rem;width:min(92vw,560px);max-height:92vh;overflow:auto}
+dialog::backdrop{background:rgba(10,10,20,.7)}
+#lightbox{width:min(94vw,960px)}
+#lightbox img{width:100%;max-height:70vh;object-fit:contain;background:#000;margin-bottom:.75rem}
+#lightbox p{margin-bottom:1rem}
+#admin h3{font-size:1.5rem;margin-bottom:1rem}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a href="#hero" class="logo">Samuel Kwame Oteng</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#publications">Papers</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#cv">Career</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <h1>Samuel Kwame Oteng</h1>
+      <p class="lede">I work on fisheries governance and public sector reform in Ghana, turning government priorities into laws, policies and plans.</p>
+      <p class="role">Deputy Director, Research, Statistics and Information Management, Ministry of Communication, Digital Technologies and Innovations. Over a decade in Ghana's Civil Service, most of it at the Ministry of Fisheries and Aquaculture.</p>
+      <div class="btns">
+        <a href="#work" class="btn solid">See my work</a>
+        <a href="#contact" class="btn">Get in touch</a>
+      </div>
+    </div>
+    <aside class="now" aria-labelledby="now-h">
+      <h2 id="now-h">At a glance</h2>
+      <dl>
+        <dt>Focus</dt>
+        <dd>Fisheries and aquaculture policy, legislation and international cooperation</dd>
+        <dt>Contributed to</dt>
+        <dd>Fisheries and Aquaculture Act, 2025 (Act 1146)<small>Member of the Fisheries Legal Review Team</small></dd>
+        <dt>Education</dt>
+        <dd>Master of Public Sector Management, GIMPA<small>Overall Best Student, 2017</small></dd>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div>
+      <h2>About</h2>
+      <p>Samuel Kwame Oteng is a public administrator whose career in Ghana's Civil Service spans more than a decade. He rose from Assistant Director to Deputy Director at the Ministry of Fisheries and Aquaculture, working on policy planning, performance reporting and Cabinet submissions.</p>
+      <p>He contributed to drafting the <strong>Fisheries and Aquaculture Act, 2025</strong>, served as national focal person for the FAO Port State Measures Agreement, and helped coordinate Ghana's dialogue with the European Union on illegal, unreported and unregulated (IUU) fishing.</p>
+      <p>He holds a Master of Public Sector Management from GIMPA and a First Class BA in Political Science with Archaeology from the University of Ghana. His papers cover democracy, globalisation and electoral politics in Sub-Saharan Africa.</p>
+    </div>
+    <aside>
+      <h3 style="font-size:1.5rem;margin-bottom:1rem">Recognition</h3>
+      <div class="row"><time>2023</time><div><h4>Civil Service Award for Professionalism</h4><p class="org">Office of the Head of Civil Service</p></div></div>
+      <div class="row"><time>2019</time><div><h4>Civil Service Award for Creativity and Innovation</h4><p class="org">Office of the Head of Civil Service</p></div></div>
+      <div class="row"><time>2017</time><div><h4>Overall Best Student, Master of Public Sector Management</h4><p class="org">GIMPA</p></div></div>
+    </aside>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Selected contributions</h2>
+    <div class="areas">
+      <article class="area">
+        <h3>Fisheries and Aquaculture Act, 2025 (Act 1146)</h3>
+        <p>Contributed to drafting the law that modernises fisheries management in Ghana and aligns it with international best practice.</p>
+        <p class="meta">Fisheries Legal Review Team</p>
+      </article>
+      <article class="area">
+        <h3>Port State Measures Regulations, 2024 (L.I. 2490)</h3>
+        <p>National focal person working with FAO legal experts and leading national consultations to strengthen Ghana's ability to combat IUU fishing.</p>
+        <p class="meta">Focal person, since 2022</p>
+      </article>
+      <article class="area">
+        <h3>Ghana–European Union IUU Dialogue</h3>
+        <p>Coordinated evidence collation and progress reports for the EU, supporting the lifting of the yellow card issued to Ghana in June 2021 and protecting access to the European seafood market.</p>
+        <p class="meta">MoFA focal person, since 2022</p>
+      </article>
+      <article class="area">
+        <h3>National policies and plans</h3>
+        <p>Helped prepare the National Fisheries and Aquaculture Policy (2022), the Fisheries Co-Management Policy (2020), the National Aquaculture Development Plan (2024 to 2028) and the Inland Fisheries Management Plan (2026 to 2030).</p>
+        <p class="meta">Policy and planning teams</p>
+      </article>
+      <article class="area">
+        <h3>Aquaculture for Food and Jobs</h3>
+        <p>Led the feasibility study and contributed to the implementation manual and operational plan for the programme.</p>
+        <p class="meta">Coordinator, 2022</p>
+      </article>
+      <article class="area">
+        <h3>Records management reform</h3>
+        <p>Developed standard operating procedures for records management and led an electronic records system at the Ministry, improving transparency and institutional memory.</p>
+        <p class="meta">Civil Service Award, 2019</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <h2>Papers</h2>
+    <p class="journal" style="margin:-1.25rem 0 2rem;color:var(--band-muted)">More of my work is on Academia.edu: <a href="https://independent.academia.edu/samueloteng">Samuel K Oteng</a> and <a href="https://independent.academia.edu/SOTENG">Samuel Oteng</a>.</p>
+    <article class="pub"><time>2023</time><div><h3>Democracy and Economic Growth in Sub-Sahara Africa</h3><p class="journal"><a href="https://www.academia.edu/109898752">Read on Academia.edu</a></p></div></article>
+    <article class="pub"><time>2022</time><div><h3>Globalization and State Power</h3><p class="journal"><a href="https://www.academia.edu/67110693">Read on Academia.edu</a></p></div></article>
+    <article class="pub"><time>2020</time><div><h3>Monetization of Electoral Politics in Ghana</h3><p class="journal"><a href="https://www.academia.edu/44826155">Read on Academia.edu</a></p></div></article>
+    <article class="pub"><time>2018</time><div><h3>Assessing the Knowledge and Perception of Teenage Youth on Teenage Pregnancy: A Case Study of Teshie Tebibiano, Ledzokuku Municipality</h3><p class="journal"><a href="https://www.academia.edu/60019267">Read on Academia.edu</a></p></div></article>
+    <article class="pub"><time>2017</time><div><h3>Democracy Before Growth or Growth Before Democracy: A Case Study of Sub-Sahara Africa</h3><p class="journal"><a href="https://www.academia.edu/40145775">Read on Academia.edu</a></p></div></article>
+    <article class="pub"><time>2017</time><div><h3>Elections and Democracy: Is Democracy All About Elections?</h3><p class="journal"><a href="https://www.academia.edu/40145776">Read on Academia.edu</a></p></div></article>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="head"><h2>Photo gallery</h2></div>
+    <div class="media-grid" id="photo-grid"></div>
+    <p class="empty" id="photo-empty">Photos will appear here soon.</p>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <div class="head"><h2>Videos</h2></div>
+    <div class="media-grid vids" id="video-grid"></div>
+    <p class="empty" id="video-empty">Videos will appear here soon.</p>
+  </div>
+</section>
+
+<dialog id="lightbox" aria-label="Photo viewer"><img id="lb-img" alt=""><p id="lb-cap"></p><button class="btn" type="button" data-close>Close</button></dialog>
+
+<section id="cv">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Career and education</h2>
+      <p>Policy analysis, legislative drafting, Cabinet memoranda, performance management and inter-agency coordination in Ghana's public sector.</p>
+      <a class="btn" href="mailto:osk2013@yahoo.com?subject=Request%20for%20full%20CV">Request the full CV</a>
+    </div>
+    <div>
+      <div class="cv-group">
+        <h3>Experience</h3>
+        <div class="row"><time>May 2026 to now</time><div><h4>Deputy Director, Research, Statistics and Information Management</h4><p class="org">Ministry of Communication, Digital Technologies and Innovations</p></div></div>
+        <div class="row"><time>Oct 2023 to May 2026</time><div><h4>Deputy Director, Finance and Administration</h4><p class="org">Ministry of Fisheries and Aquaculture</p><p>Led planning, reporting and programme delivery for the Directorate, and drafted Cabinet memoranda, policy briefs and Ministerial speeches.</p></div></div>
+        <div class="row"><time>Oct 2020 to Aug 2023</time><div><h4>Assistant Director I, Finance and Administration</h4><p class="org">Ministry of Fisheries and Aquaculture</p><p>Coordinated the AFJ feasibility study and led the 2021 to 2024 Fisheries Sector Handing Over Notes.</p></div></div>
+        <div class="row"><time>Oct 2017 to Oct 2020</time><div><h4>Assistant Director IIA, Finance and Administration</h4><p class="org">Ministry of Fisheries and Aquaculture</p></div></div>
+        <div class="row"><time>Sep 2014 to Nov 2017</time><div><h4>Assistant Director IIB, Finance and Administration</h4><p class="org">Ministry of Fisheries and Aquaculture</p></div></div>
+        <div class="row"><time>2011 to 2014</time><div><h4>Earlier roles</h4><p class="org">Teacher and Headmaster, Victory Senior High School, Kumasi; Administrative Assistant, Prestige Group; National Service, NCCE</p></div></div>
+      </div>
+      <div class="cv-group">
+        <h3>Education</h3>
+        <div class="row"><time>2017</time><div><h4>Master of Public Sector Management</h4><p class="org">Ghana Institute of Management and Public Administration</p><p>Graduated as Overall Best Student.</p></div></div>
+        <div class="row"><time>2007 to 2011</time><div><h4>BA, Political Science with Archaeology</h4><p class="org">University of Ghana, Legon</p><p>First Class Honours.</p></div></div>
+      </div>
+      <div class="cv-group">
+        <h3>Representing Ghana</h3>
+        <div class="row"><time>Jun 2026</time><div><h4>11th Our Ocean Conference</h4><p class="org">Mombasa, Kenya</p></div></div>
+        <div class="row"><time>Jun 2025</time><div><h4>United Nations Ocean Conference</h4><p class="org">Nice, France</p></div></div>
+        <div class="row"><time>Mar 2025</time><div><h4>ECOWAS stakeholders' meeting on IUU fishing</h4><p class="org">Abidjan, Côte d'Ivoire</p></div></div>
+        <div class="row"><time>Jul 2024</time><div><h4>36th Session of the FAO Committee on Fisheries</h4><p class="org">Rome, Italy</p></div></div>
+        <div class="row"><time>Nov to Dec 2023</time><div><h4>46th Session of the Codex Alimentarius Commission</h4><p class="org">Rome, Italy</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Get in touch</h2>
+      <p>I welcome conversations about fisheries governance, public sector reform, policy research and speaking invitations.</p>
+      <dl class="details">
+        <div><dt>Email</dt><dd><a href="mailto:osk2013@yahoo.com">osk2013@yahoo.com</a></dd></div>
+        <div><dt>Based in</dt><dd>Accra, Ghana</dd></div>
+        <div><dt>Academia.edu</dt><dd><a href="https://independent.academia.edu/samueloteng">Samuel K Oteng</a><br><a href="https://independent.academia.edu/SOTENG">Samuel Oteng</a></dd></div>
+      </dl>
+    </div>
+
+    <form id="contact-form" novalidate>
+      <div class="pair">
+        <div class="field"><label for="first">First name</label><input id="first" name="first" autocomplete="given-name" required></div>
+        <div class="field"><label for="last">Last name</label><input id="last" name="last" autocomplete="family-name" required></div>
+      </div>
+      <div class="field"><label for="email">Your email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field">
+        <label for="purpose">What is your enquiry about?</label>
+        <select id="purpose" name="purpose" required>
+          <option value="">Choose a topic</option>
+          <option>Research collaboration</option>
+          <option>Speaking or conference</option>
+          <option>Publication or editorial</option>
+          <option>Mentorship</option>
+          <option>General enquiry</option>
+        </select>
+      </div>
+      <div class="field"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
+      <button class="btn solid" type="submit">Write email</button>
+      <p class="status" id="status" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Samuel Kwame Oteng</span>
+    <span>Accra, Ghana</span>
+  </div>
+</footer>
+
+<script>
+  // Opens the visitor's email app with the message filled in.
+  // Swap this for a form service (Formspree, Netlify Forms) to send directly from the page.
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('status');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const f = new FormData(form);
+    const missing = ['first','last','email','purpose','message'].filter(k => !String(f.get(k)).trim());
+    if (missing.length || !form.email.checkValidity()) {
+      status.textContent = 'Please complete every field and use a valid email address.';
+      (form[missing[0]] || form.email).focus();
+      return;
+    }
+    const subject = `${f.get('purpose')}: ${f.get('first')} ${f.get('last')}`;
+    const body = `${f.get('message')}\n\n${f.get('first')} ${f.get('last')}\n${f.get('email')}`;
+    status.textContent = 'Opening your email app. If nothing opens, write to osk2013@yahoo.com.';
+    location.href = `mailto:osk2013@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>
+<script>
+  // ── WHERE YOUR PHOTOS AND VIDEOS LIVE ──
+  // Fill these in once with your GitHub details. After that, any photo you upload to the
+  // "photos" folder and any video you upload to the "videos" folder appears here automatically.
+  const SOURCE = { owner: 'YOUR-GITHUB-USERNAME', repo: 'YOUR-REPOSITORY-NAME', branch: 'main' };
+
+  const IMAGE = /\.(jpe?g|png|gif|webp|avif)$/i, VIDEO = /\.(mp4|webm|mov|m4v)$/i;
+  const $ = s => document.querySelector(s);
+  const el = (t, props = {}, kids = []) => { const n = Object.assign(document.createElement(t), props); n.append(...kids); return n; };
+  const nice = name => name.replace(/\.[^.]+$/, '').replace(/^\d{4}-\d{2}(-\d{2})?[-_ ]*/, '').replace(/[-_]+/g, ' ').trim();
+
+  async function folder(dir) {
+    const key = 'sko:' + dir;
+    try { const c = JSON.parse(sessionStorage.getItem(key)); if (c && Date.now() - c.t < 600000) return c.v; } catch {}
+    const r = await fetch(`https://api.github.com/repos/${SOURCE.owner}/${SOURCE.repo}/contents/${dir}?ref=${SOURCE.branch}`);
+    if (!r.ok) throw new Error(r.status);
+    const v = (await r.json()).filter(f => f.type === 'file').sort((a, b) => b.name.localeCompare(a.name));
+    try { sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), v })); } catch {}
+    return v;
+  }
+
+  async function links() {
+    try {
+      const r = await fetch(`https://raw.githubusercontent.com/${SOURCE.owner}/${SOURCE.repo}/${SOURCE.branch}/videos/links.txt`);
+      if (!r.ok) return [];
+      return (await r.text()).split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#')).map(l => {
+        const [title, url] = l.includes('|') ? l.split('|').map(x => x.trim()) : ['Video', l];
+        return { type: 'link', title, url };
+      }).filter(m => /^https?:\/\//.test(m.url));
+    } catch { return []; }
+  }
+
+  function build(m) {
+    let node;
+    if (m.type === 'photo') {
+      node = el('button', { type: 'button', className: 'thumb', ariaLabel: 'Enlarge photo: ' + m.title }, [el('img', { src: m.url, alt: m.title, loading: 'lazy' })]);
+      node.onclick = () => { $('#lb-img').src = m.url; $('#lb-img').alt = m.title; $('#lb-cap').textContent = m.title; $('#lightbox').showModal(); };
+    } else if (m.type === 'video') {
+      node = el('video', { src: m.url, controls: true, preload: 'metadata' });
+    } else {
+      let host = ''; try { host = new URL(m.url).hostname.replace('www.', ''); } catch {}
+      node = el('a', { className: 'linkcard', href: m.url, target: '_blank', rel: 'noopener', textContent: 'Watch on ' + host });
+    }
+    return el('figure', { className: 'item' }, [node, el('h3', { textContent: m.title })]);
+  }
+
+  function show(gridId, emptyId, items) {
+    $(gridId).replaceChildren(...items.map(build));
+    $(emptyId).hidden = items.length > 0;
+  }
+
+  async function load() {
+    const [photos, vids, extra] = await Promise.all([
+      folder('photos').catch(() => []), folder('videos').catch(() => []), links()
+    ]);
+    show('#photo-grid', '#photo-empty', photos.filter(f => IMAGE.test(f.name)).map(f => ({ type: 'photo', url: f.download_url, title: nice(f.name) })));
+    show('#video-grid', '#video-empty', [
+      ...extra,
+      ...vids.filter(f => VIDEO.test(f.name)).map(f => ({ type: 'video', url: f.download_url, title: nice(f.name) }))
+    ]);
+  }
+
+  document.addEventListener('click', e => { if (e.target.closest('[data-close]')) e.target.closest('dialog').close(); });
+  load();
+</script>
+</body>
+</html>
