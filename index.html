@@ -157,9 +157,7 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
 #lightbox img{width:100%;max-height:70vh;object-fit:contain;background:#000;margin-bottom:.75rem}
 #lightbox p{margin-bottom:1rem}
 #admin h3{font-size:1.5rem;margin-bottom:1rem}
-.portrait{display:none;width:min(100%,220px);height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center top;margin-bottom:1.25rem;background:var(--rule)}
-.portrait.ok{display:block}
-.strip{overflow:hidden;padding-bottom:clamp(3rem,6vw,4.5rem)}
+.strip{overflow:hidden;padding-top:1.5rem}
 .track{display:flex;width:max-content;animation:slide 60s linear infinite}
 .strip:hover .track{animation-play-state:paused}
 .track img{height:clamp(160px,22vw,240px);width:auto;display:block;margin-right:1rem;background:var(--rule)}
@@ -185,6 +183,8 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
 </nav>
 
 <main>
+<div class="strip" id="strip" aria-label="Photos" hidden><div class="track" id="track"></div></div>
+
 <section id="hero">
   <div class="wrap">
     <div class="hero-copy">
@@ -197,7 +197,6 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
       </div>
     </div>
     <div class="hero-side">
-      <img id="portrait" class="portrait" alt="Portrait of Samuel Kwame Oteng" width="400" height="500">
       <aside class="now" aria-labelledby="now-h">
       <h2 id="now-h">At a glance</h2>
       <dl>
@@ -212,8 +211,6 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
     </div>
   </div>
 </section>
-
-<div class="strip" id="strip" aria-label="Photos" hidden><div class="track" id="track"></div></div>
 
 <section id="about">
   <div class="wrap">
@@ -475,12 +472,6 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
   }
 
   document.addEventListener('click', e => { if (e.target.closest('[data-close]')) e.target.closest('dialog').close(); });
-  (() => {
-    const img = $('#portrait'), exts = ['jpg', 'jpeg', 'png', 'webp']; let i = 0;
-    img.onload = () => img.classList.add('ok');
-    img.onerror = () => { if (++i < exts.length) img.src = 'portrait.' + exts[i]; else img.remove(); };
-    img.src = 'portrait.jpg';
-  })();
   load();
 </script>
 </body>
