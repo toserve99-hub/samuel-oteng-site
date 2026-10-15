@@ -184,6 +184,10 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
 .auto-news .row a{color:var(--accent);text-underline-offset:.25em}
 .auto-news .src{color:var(--muted);font-size:.88rem;margin-top:.2rem}
 .auto-news .row:last-child{border-bottom:1px solid var(--rule)}
+#dashboard .dash-note{color:var(--muted);max-width:60ch;margin-bottom:1.5rem}
+#dashboard details{margin-top:1.75rem}
+#dashboard summary{cursor:pointer;font:500 .95rem var(--sans);color:var(--accent);text-underline-offset:.25em}
+#dashboard iframe{width:100%;height:min(80vh,720px);border:1px solid var(--rule);background:#fff;margin-top:1rem;display:block}
 </style>
 </head>
 <body>
@@ -195,6 +199,7 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
       <li><a href="#about">About</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#news">News</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
       <li><a href="#publications">Papers</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#videos">Videos</a></li>
@@ -305,6 +310,18 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
       <p class="auto-note">Headlines are collected automatically from Google News once a day and link to the original publishers. They are not written or endorsed by me.</p>
       <div id="auto-list"></div>
     </div>
+  </div>
+</section>
+
+<section id="dashboard">
+  <div class="wrap">
+    <h2>Live fisheries dashboard</h2>
+    <p class="dash-note">An interactive dashboard on fisheries that updates as new data is entered. It opens in a new tab.</p>
+    <div class="btns"><a class="btn solid" href="https://script.google.com/macros/s/AKfycbzzvjTyEGjyIeUeVs0Tf4pZKhZLGPpZY_UPbH-3O3BiWHgOVh3UdsLMipXpEB-5iJg3oQ/exec" target="_blank" rel="noopener noreferrer">Open the dashboard</a></div>
+    <details id="dash-details">
+      <summary>View it on this page</summary>
+      <iframe id="dash-frame" title="Live fisheries dashboard" loading="lazy" data-src="https://script.google.com/macros/s/AKfycbzzvjTyEGjyIeUeVs0Tf4pZKhZLGPpZY_UPbH-3O3BiWHgOVh3UdsLMipXpEB-5iJg3oQ/exec"></iframe>
+    </details>
   </div>
 </section>
 
@@ -567,6 +584,7 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
   load();
   loadNews();
   loadAutoNews();
+  $('#dash-details').addEventListener('toggle', e => { const f = $('#dash-frame'); if (e.target.open && !f.src) f.src = f.dataset.src; });
 </script>
 </body>
 </html>
