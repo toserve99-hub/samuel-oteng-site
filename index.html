@@ -178,6 +178,12 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
 #news .row:last-child{border-bottom:1px solid var(--rule)}
 #news .row a{color:var(--accent);text-underline-offset:.25em}
 .lb-nav{display:flex;flex-wrap:wrap;gap:.75rem}
+.auto-news{margin-top:3rem;padding-top:1.5rem;border-top:2px solid var(--rule)}
+.auto-news h3{font-size:1.5rem;margin-bottom:.4rem}
+.auto-note{color:var(--muted);font-size:.88rem;margin-bottom:1rem;max-width:60ch}
+.auto-news .row a{color:var(--accent);text-underline-offset:.25em}
+.auto-news .src{color:var(--muted);font-size:.88rem;margin-top:.2rem}
+.auto-news .row:last-child{border-bottom:1px solid var(--rule)}
 </style>
 </head>
 <body>
@@ -293,6 +299,12 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
     <h2>News and updates</h2>
     <div id="news-list"></div>
     <p class="empty" id="news-empty" hidden>Updates will appear here soon.</p>
+
+    <div id="auto-news" class="auto-news" hidden>
+      <h3>Fisheries news in Ghana</h3>
+      <p class="auto-note">Headlines are collected automatically from Google News once a day and link to the original publishers. They are not written or endorsed by me.</p>
+      <div id="auto-list"></div>
+    </div>
   </div>
 </section>
 
@@ -530,6 +542,21 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
       return el('div', { className: 'row' }, [el('time', { textContent: when(n.date) }), el('div', {}, [el('h4', {}, [t])])]);
     }));
   }
+  async function loadAutoNews() {
+    let items = [];
+    try {
+      const r = await fetch(`https://raw.githubusercontent.com/${SOURCE.owner}/${SOURCE.repo}/${SOURCE.branch}/headlines.json`);
+      if (r.ok) items = (await r.json()).filter(n => n.title && /^https:\/\//.test(n.link)).slice(0, 8);
+    } catch {}
+    $('#auto-news').hidden = items.length === 0;
+    $('#auto-list').replaceChildren(...items.map(n => el('div', { className: 'row' }, [
+      el('time', { textContent: when(n.date) }),
+      el('div', {}, [
+        el('h4', {}, [el('a', { href: n.link, target: '_blank', rel: 'noopener noreferrer', textContent: n.title })]),
+        el('p', { className: 'src', textContent: n.source || '' })
+      ])
+    ])));
+  }
   document.addEventListener('keydown', e => { if ($('#lightbox').open && gallery.length) { if (e.key === 'ArrowRight') openAt(at + 1); if (e.key === 'ArrowLeft') openAt(at - 1); } });
 
   // VISITOR COUNTS (optional): put your GoatCounter site code here, for example 'samueloteng'.
@@ -539,6 +566,7 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
   document.addEventListener('click', e => { if (e.target.closest('[data-prev]')) openAt(at - 1); if (e.target.closest('[data-next]')) openAt(at + 1); if (e.target.closest('[data-close]')) e.target.closest('dialog').close(); });
   load();
   loadNews();
+  loadAutoNews();
 </script>
 </body>
 </html>
