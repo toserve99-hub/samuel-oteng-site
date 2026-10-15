@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Samuel Kwame Oteng | Public administrator and fisheries policy practitioner, Ghana</title>
 <meta name="description" content="Samuel Kwame Oteng is a Deputy Director in Ghana's Civil Service working on fisheries governance, policy, legislation and public sector reform.">
+<link rel="canonical" href="https://toserve99-hub.github.io/samuel-oteng-site/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Samuel Kwame Oteng">
+<meta property="og:title" content="Samuel Kwame Oteng | Fisheries governance and public sector reform, Ghana">
+<meta property="og:description" content="Samuel Kwame Oteng is a Deputy Director in Ghana's Civil Service working on fisheries governance, policy, legislation and public sector reform.">
+<meta property="og:url" content="https://toserve99-hub.github.io/samuel-oteng-site/">
+<meta property="og:image" content="https://toserve99-hub.github.io/samuel-oteng-site/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Samuel Kwame Oteng","url":"https://toserve99-hub.github.io/samuel-oteng-site/","jobTitle":"Deputy Director, Research, Statistics and Information Management","worksFor":{"@type":"Organization","name":"Ministry of Communication, Digital Technologies and Innovations"},"alumniOf":["Ghana Institute of Management and Public Administration","University of Ghana"],"nationality":"Ghanaian","sameAs":["https://independent.academia.edu/samueloteng","https://independent.academia.edu/SOTENG"]}</script>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -160,9 +171,13 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
 .strip{overflow:hidden;padding-top:1.5rem}
 .track{display:flex;width:max-content;animation:slide 60s linear infinite}
 .strip:hover .track{animation-play-state:paused}
-.track img{height:clamp(160px,22vw,240px);width:auto;display:block;margin-right:1rem;background:var(--rule)}
+.track img{height:clamp(90px,11vw,140px);width:auto;display:block;margin-right:1rem;background:var(--rule)}
 @keyframes slide{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 @media (prefers-reduced-motion:reduce){.track{animation:none}.strip{overflow-x:auto}.track [aria-hidden]{display:none}}
+#news{background:var(--surface);border-block:1px solid var(--rule)}
+#news .row:last-child{border-bottom:1px solid var(--rule)}
+#news .row a{color:var(--accent);text-underline-offset:.25em}
+.lb-nav{display:flex;flex-wrap:wrap;gap:.75rem}
 </style>
 </head>
 <body>
@@ -173,6 +188,7 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#work">Work</a></li>
+      <li><a href="#news">News</a></li>
       <li><a href="#publications">Papers</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#videos">Videos</a></li>
@@ -272,6 +288,14 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
   </div>
 </section>
 
+<section id="news">
+  <div class="wrap">
+    <h2>News and updates</h2>
+    <div id="news-list"></div>
+    <p class="empty" id="news-empty" hidden>Updates will appear here soon.</p>
+  </div>
+</section>
+
 <section id="publications">
   <div class="wrap">
     <h2>Papers</h2>
@@ -301,7 +325,7 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
   </div>
 </section>
 
-<dialog id="lightbox" aria-label="Photo viewer"><img id="lb-img" alt=""><p id="lb-cap"></p><button class="btn" type="button" data-close>Close</button></dialog>
+<dialog id="lightbox" aria-label="Photo viewer"><img id="lb-img" alt=""><p id="lb-cap"></p><div class="lb-nav"><button class="btn" type="button" data-prev>Previous</button><button class="btn" type="button" data-next>Next</button><button class="btn" type="button" data-close>Close</button></div></dialog>
 
 <section id="cv">
   <div class="wrap">
@@ -367,7 +391,8 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
         </select>
       </div>
       <div class="field"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
-      <button class="btn solid" type="submit">Write email</button>
+      <input name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+      <button class="btn solid" type="submit" id="send">Write email</button>
       <p class="status" id="status" role="status"></p>
     </form>
   </div>
@@ -384,7 +409,11 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
 <script>
   // Opens the visitor's email app with the message filled in.
   // Swap this for a form service (Formspree, Netlify Forms) to send directly from the page.
+  // CONTACT FORM: paste your Formspree form address here (see the setup notes) so messages are sent
+  // straight to your inbox. While this is empty, the form opens the visitor's email app instead.
+  const FORM_ENDPOINT = 'https://formspree.io/f/xyekbnly';
   const form = document.getElementById('contact-form');
+  if (FORM_ENDPOINT) document.getElementById('send').textContent = 'Send message';
   const status = document.getElementById('status');
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -395,7 +424,16 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
       (form[missing[0]] || form.email).focus();
       return;
     }
+    if (f.get('_gotcha')) return;
     const subject = `${f.get('purpose')}: ${f.get('first')} ${f.get('last')}`;
+    if (FORM_ENDPOINT) {
+      status.textContent = 'Sending...';
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name: f.get('first') + ' ' + f.get('last'), email: f.get('email'), topic: f.get('purpose'), message: f.get('message'), _subject: subject }) })
+        .then(r => { if (!r.ok) throw 0; form.reset(); status.textContent = 'Thank you. Your message has been sent.'; })
+        .catch(() => { status.textContent = 'Sorry, your message could not be sent. Please write to osk2013@yahoo.com.'; });
+      return;
+    }
     const body = `${f.get('message')}\n\n${f.get('first')} ${f.get('last')}\n${f.get('email')}`;
     status.textContent = 'Opening your email app. If nothing opens, write to osk2013@yahoo.com.';
     location.href = `mailto:osk2013@yahoo.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -410,6 +448,12 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
   const IMAGE = /\.(jpe?g|png|gif|webp|avif)$/i, VIDEO = /\.(mp4|webm|mov|m4v)$/i;
   const $ = s => document.querySelector(s);
   const el = (t, props = {}, kids = []) => { const n = Object.assign(document.createElement(t), props); n.append(...kids); return n; };
+  const when = name => { const m = name.match(/^(\d{4})-(\d{2})(?:-(\d{2}))?/); if (!m) return '';
+    return new Date(+m[1], +m[2] - 1, +(m[3] || 1)).toLocaleDateString('en-GB', m[3] ? { day: 'numeric', month: 'long', year: 'numeric' } : { month: 'long', year: 'numeric' }); };
+  let gallery = [], at = 0;
+  function openAt(i) { at = (i + gallery.length) % gallery.length; const m = gallery[at];
+    $('#lb-img').src = m.url; $('#lb-img').alt = m.title; $('#lb-cap').textContent = [m.title, m.date].filter(Boolean).join(', ');
+    if (!$('#lightbox').open) $('#lightbox').showModal(); }
   const nice = name => name.replace(/\.[^.]+$/, '').replace(/^\d{4}-\d{2}(-\d{2})?[-_ ]*/, '').replace(/[-_]+/g, ' ').trim();
 
   async function folder(dir) {
@@ -437,14 +481,14 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
     let node;
     if (m.type === 'photo') {
       node = el('button', { type: 'button', className: 'thumb', ariaLabel: 'Enlarge photo: ' + m.title }, [el('img', { src: m.url, alt: m.title, loading: 'lazy' })]);
-      node.onclick = () => { $('#lb-img').src = m.url; $('#lb-img').alt = m.title; $('#lb-cap').textContent = m.title; $('#lightbox').showModal(); };
+      node.onclick = () => openAt(gallery.indexOf(m));
     } else if (m.type === 'video') {
       node = el('video', { src: m.url, controls: true, preload: 'metadata' });
     } else {
       let host = ''; try { host = new URL(m.url).hostname.replace('www.', ''); } catch {}
       node = el('a', { className: 'linkcard', href: m.url, target: '_blank', rel: 'noopener', textContent: 'Watch on ' + host });
     }
-    return el('figure', { className: 'item' }, [node, el('h3', { textContent: m.title })]);
+    return el('figure', { className: 'item' }, [node, el('h3', { textContent: m.title }), m.date && el('p', { textContent: m.date })].filter(Boolean));
   }
 
   function show(gridId, emptyId, items) {
@@ -456,7 +500,8 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
     const [photos, vids, extra] = await Promise.all([
       folder('photos').catch(() => []), folder('videos').catch(() => []), links()
     ]);
-    show('#photo-grid', '#photo-empty', photos.filter(f => IMAGE.test(f.name)).map(f => ({ type: 'photo', url: f.download_url, title: nice(f.name) })));
+    gallery = photos.filter(f => IMAGE.test(f.name)).map(f => ({ type: 'photo', url: f.download_url, title: nice(f.name), date: when(f.name) }));
+    show('#photo-grid', '#photo-empty', gallery);
     const strip = photos.filter(f => IMAGE.test(f.name)).slice(0, 12);
     if (strip.length) {
       const half = []; while (half.length < 8) half.push(...strip);
@@ -471,8 +516,29 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
     ]);
   }
 
-  document.addEventListener('click', e => { if (e.target.closest('[data-close]')) e.target.closest('dialog').close(); });
+  async function loadNews() {
+    let items = [];
+    try {
+      const r = await fetch(`https://raw.githubusercontent.com/${SOURCE.owner}/${SOURCE.repo}/${SOURCE.branch}/news.txt`);
+      if (r.ok) items = (await r.text()).split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#')).map(l => {
+        const [date, title, url] = l.split('|').map(x => (x || '').trim()); return { date, title, url };
+      }).filter(n => n.title && /^\d{4}-\d{2}/.test(n.date)).sort((a, b) => b.date.localeCompare(a.date)).slice(0, 10);
+    } catch {}
+    $('#news-empty').hidden = items.length > 0;
+    $('#news-list').replaceChildren(...items.map(n => {
+      const t = /^https?:\/\//.test(n.url) ? el('a', { href: n.url, target: '_blank', rel: 'noopener', textContent: n.title }) : document.createTextNode(n.title);
+      return el('div', { className: 'row' }, [el('time', { textContent: when(n.date) }), el('div', {}, [el('h4', {}, [t])])]);
+    }));
+  }
+  document.addEventListener('keydown', e => { if ($('#lightbox').open && gallery.length) { if (e.key === 'ArrowRight') openAt(at + 1); if (e.key === 'ArrowLeft') openAt(at - 1); } });
+
+  // VISITOR COUNTS (optional): put your GoatCounter site code here, for example 'samueloteng'.
+  const GOATCOUNTER = '';
+  if (GOATCOUNTER) document.head.append(el('script', { async: true, src: 'https://gc.zgo.at/count.js', dataset: { goatcounter: `https://${GOATCOUNTER}.goatcounter.com/count` } }));
+
+  document.addEventListener('click', e => { if (e.target.closest('[data-prev]')) openAt(at - 1); if (e.target.closest('[data-next]')) openAt(at + 1); if (e.target.closest('[data-close]')) e.target.closest('dialog').close(); });
   load();
+  loadNews();
 </script>
 </body>
 </html>

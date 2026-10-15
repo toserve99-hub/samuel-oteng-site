@@ -1,0 +1,5 @@
+# One update per line, in the form:  date | headline | optional link
+# Dates are year-month or year-month-day. The newest shows first. Lines starting with # are ignored.
+# Replace or delete the two examples below with your own news.
+2026-06 | Represented Ghana at the 11th Our Ocean Conference, Mombasa, Kenya
+2026-05 | Appointed Deputy Director, Research, Statistics and Information Management, Ministry of Communication, Digital Technologies and Innovations
