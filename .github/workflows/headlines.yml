@@ -1,0 +1,76 @@
+name: Update news headlines
+
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect headlines
+        run: |
+          cat > collect.py <<'PYEOF'
+          import json, os, re, urllib.parse, urllib.request
+          import xml.etree.ElementTree as ET
+          from datetime import datetime, timedelta, timezone
+          from email.utils import parsedate_to_datetime
+
+          DEFAULT_TOPICS = ["Ghana fisheries", "Ghana blue economy", "Ghana aquaculture"]
+          MAX_ITEMS, MAX_AGE_DAYS = 12, 30
+
+          def read_topics():
+              if not os.path.exists("topics.txt"):
+                  return DEFAULT_TOPICS
+              lines = [l.strip() for l in open("topics.txt", encoding="utf-8")]
+              return [l for l in lines if l and not l.startswith("#")] or DEFAULT_TOPICS
+
+          def parse(xml_bytes, cutoff):
+              out = []
+              for it in ET.fromstring(xml_bytes).iter("item"):
+                  title = (it.findtext("title") or "").strip()
+                  link = (it.findtext("link") or "").strip()
+                  source = (it.findtext("source") or "").strip()
+                  try:
+                      when = parsedate_to_datetime(it.findtext("pubDate")).astimezone(timezone.utc)
+                  except Exception:
+                      continue
+                  if source and title.endswith(" - " + source):
+                      title = title[: -len(source) - 3].strip()
+                  if title and link.startswith("https://") and when >= cutoff:
+                      out.append({"title": title, "source": source, "link": link, "date": when.strftime("%Y-%m-%d")})
+              return out
+
+          def main():
+              cutoff = datetime.now(timezone.utc) - timedelta(days=MAX_AGE_DAYS)
+              found = {}
+              for topic in read_topics():
+                  url = "https://news.google.com/rss/search?q=" + urllib.parse.quote(topic + " when:30d") + "&hl=en-GH&gl=GH&ceid=GH:en"
+                  try:
+                      req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (headline collector)"})
+                      data = urllib.request.urlopen(req, timeout=30).read()
+                      for item in parse(data, cutoff):
+                          found.setdefault(re.sub(r"\W+", " ", item["title"].lower()), item)
+                  except Exception as e:
+                      print("Skipped topic:", topic, e)
+              items = sorted(found.values(), key=lambda i: i["date"], reverse=True)[:MAX_ITEMS]
+              if items:  # never replace good data with an empty result
+                  json.dump(items, open("headlines.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+              print("Saved", len(items), "headlines")
+
+          if __name__ == "__main__":
+              main()
+          PYEOF
+          python3 collect.py
+          rm collect.py
+      - name: Save headlines
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add headlines.json
+          git diff --cached --quiet || (git commit -m "Update headlines" && git push)
