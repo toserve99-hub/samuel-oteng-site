@@ -1,0 +1,6 @@
+# The topics used to collect headlines, one per line. Lines starting with # are ignored.
+# Edit this file on GitHub to change what appears in the "Fisheries news in Ghana" box.
+Ghana fisheries
+Ghana blue economy
+Ghana aquaculture
+illegal unreported unregulated fishing Ghana
