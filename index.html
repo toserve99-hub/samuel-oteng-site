@@ -157,6 +157,14 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
 #lightbox img{width:100%;max-height:70vh;object-fit:contain;background:#000;margin-bottom:.75rem}
 #lightbox p{margin-bottom:1rem}
 #admin h3{font-size:1.5rem;margin-bottom:1rem}
+.portrait{display:none;width:100%;aspect-ratio:4/5;max-height:440px;object-fit:cover;object-position:center top;margin-bottom:1.25rem;background:var(--rule)}
+.portrait.ok{display:block}
+.strip{overflow:hidden;padding-bottom:clamp(3rem,6vw,4.5rem)}
+.track{display:flex;width:max-content;animation:slide 60s linear infinite}
+.strip:hover .track{animation-play-state:paused}
+.track img{height:clamp(160px,22vw,240px);width:auto;display:block;margin-right:1rem;background:var(--rule)}
+@keyframes slide{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media (prefers-reduced-motion:reduce){.track{animation:none}.strip{overflow-x:auto}.track [aria-hidden]{display:none}}
 </style>
 </head>
 <body>
@@ -188,7 +196,9 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
         <a href="#contact" class="btn">Get in touch</a>
       </div>
     </div>
-    <aside class="now" aria-labelledby="now-h">
+    <div class="hero-side">
+      <img id="portrait" class="portrait" alt="Portrait of Samuel Kwame Oteng" width="400" height="500">
+      <aside class="now" aria-labelledby="now-h">
       <h2 id="now-h">At a glance</h2>
       <dl>
         <dt>Focus</dt>
@@ -199,8 +209,11 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
         <dd>Master of Public Sector Management, GIMPA<small>Overall Best Student, 2017</small></dd>
       </dl>
     </aside>
+    </div>
   </div>
 </section>
+
+<div class="strip" id="strip" aria-label="Photos" hidden><div class="track" id="track"></div></div>
 
 <section id="about">
   <div class="wrap">
@@ -240,8 +253,13 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
       </article>
       <article class="area">
         <h3>National policies and plans</h3>
-        <p>Helped prepare the National Fisheries and Aquaculture Policy (2022), the Fisheries Co-Management Policy (2020), the National Aquaculture Development Plan (2024 to 2028) and the Inland Fisheries Management Plan (2026 to 2030).</p>
+        <p>Helped prepare the Fisheries Co-Management Policy (2020), the National Fisheries and Aquaculture Policy (2022), the National Blue Economy Policy (2025), the Marine Fisheries Management Plan (2022 to 2026), the National Aquaculture Development Plan (2024 to 2028) and the Inland Fisheries Management Plan (2026 to 2030).</p>
         <p class="meta">Policy and planning teams</p>
+      </article>
+      <article class="area">
+        <h3>Ghana Blue Economy Commission Bill, 2026</h3>
+        <p>Served as a member of the Committee that developed the Bill to establish the Ghana Blue Economy Commission.</p>
+        <p class="meta">Committee member, 2026</p>
       </article>
       <article class="area">
         <h3>Aquaculture for Food and Jobs</h3>
@@ -442,6 +460,14 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
       folder('photos').catch(() => []), folder('videos').catch(() => []), links()
     ]);
     show('#photo-grid', '#photo-empty', photos.filter(f => IMAGE.test(f.name)).map(f => ({ type: 'photo', url: f.download_url, title: nice(f.name) })));
+    const strip = photos.filter(f => IMAGE.test(f.name)).slice(0, 12);
+    if (strip.length) {
+      const half = []; while (half.length < 8) half.push(...strip);
+      const mk = (f, dup) => el('img', { src: f.download_url, alt: dup ? '' : nice(f.name), decoding: 'async', ...(dup ? { ariaHidden: 'true' } : {}) });
+      $('#track').replaceChildren(...half.map(f => mk(f, false)), ...half.map(f => mk(f, true)));
+      $('#track').style.animationDuration = half.length * 6 + 's';
+      $('#strip').hidden = false;
+    }
     show('#video-grid', '#video-empty', [
       ...extra,
       ...vids.filter(f => VIDEO.test(f.name)).map(f => ({ type: 'video', url: f.download_url, title: nice(f.name) }))
@@ -449,6 +475,12 @@ dialog::backdrop{background:rgba(10,10,20,.7)}
   }
 
   document.addEventListener('click', e => { if (e.target.closest('[data-close]')) e.target.closest('dialog').close(); });
+  (() => {
+    const img = $('#portrait'), exts = ['jpg', 'jpeg', 'png', 'webp']; let i = 0;
+    img.onload = () => img.classList.add('ok');
+    img.onerror = () => { if (++i < exts.length) img.src = 'portrait.' + exts[i]; else img.remove(); };
+    img.src = 'portrait.jpg';
+  })();
   load();
 </script>
 </body>
